@@ -179,7 +179,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         self.contentView?.addConstraints(leftAndRightConstraints)
         self.contentView?.addConstraints(topAndBottomConstraints)
         
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -196,8 +195,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             headerTransform = CATransform3DScale(headerTransform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
             
             // 이미지를 TopCenter 를 anchor 로 해서 이미지가 늘어나게끔 하기 위해서
-            // 만약에 CGPoint(x: 0.5, 0.5) 이렇게하면 Center 륵 기준으로 늘어난다.
-            // 반만큼 내려간 상태에서 transform 이 시작되므로 3DTranslate 에서 HeaderView 의 반을 위로 올려준다.
+            // 만약에 CGPoint(x: 0.5, 0.5) 이렇게하면 Center 기준으로 늘어난다.
+            
+            // CGPoint(x: 0.5, y: 0.0) 이렇게하면 반만큼 내려간 상태에서 transform 이 시작되므로 3DTranslate 에서 HeaderView.imageView 높이의 반을 위로 올려준다.
             headerView!.imageView!.layer.anchorPoint = CGPoint(x: 0.5, y: 0.0)
             headerView!.imageView!.layer.transform = headerTransform
             
